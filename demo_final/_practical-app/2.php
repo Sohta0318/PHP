@@ -1,21 +1,32 @@
 <?php include "functions.php" ?>
 <?php include "includes/header.php" ?>
 
-	<section class="content">
+<section class="content">
 
-		<aside class="col-xs-4">
+  <aside class="col-xs-4">
 
-	<?php Navigation();?>
-			
-			
-		</aside><!--SIDEBAR-->
+    <?php Navigation();?>
 
 
-		<article class="main-content col-xs-8">
-		
+  </aside>
+  <!--SIDEBAR-->
 
 
-		<?php
+  <article class="main-content col-xs-8">
+
+
+
+    <?php
+
+		$num1 = 10;
+		$num2 = 20;
+		echo $num1 + $num2. '<br>';
+
+		$list = array(23,24);
+		$list_associative = array('num'=>22);
+
+		echo $list[1].'<br>';
+		echo $list_associative['num'].'<br>';
 
 		/* Step 1: Make 2 variables called number1 and number2 and set 1 to value 10 and the other 20:
 
@@ -36,8 +47,9 @@
 
 		?>
 
-	
 
-		</article><!--MAIN CONTENT-->
 
-<?php include "includes/footer.php" ?>
+  </article>
+  <!--MAIN CONTENT-->
+
+  <?php include "includes/footer.php" ?>
