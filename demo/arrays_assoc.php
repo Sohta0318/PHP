@@ -11,10 +11,15 @@
 <body>
   <?php 
   
-  $number = array(10,20,49);
-  echo $number[1] . '<br>';
+  $number = array('juanita', 'maria', 'jose');
+  // print_r($number);
+  echo '<br>';
+  // echo $number[1] . '<br>';
 
-  $name = array('juanita', 'maria', 'jose');
+  $names = array('first_name' => 'Edwin', 'last_name' => 'Diaz');
+  // print_r($names);
+
+  echo $names['first_name']. ' '. $names['last_name'];
   
   ?>
 </body>
