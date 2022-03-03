@@ -14,7 +14,7 @@
   $number = array(10,20,49);
   echo $number[1] . '<br>';
 
-  $name = array('')
+  $name = array('juanita', 'maria', 'jose');
   
   ?>
 </body>
