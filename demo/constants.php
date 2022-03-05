@@ -10,16 +10,14 @@
 
 <body>
   <?php
-$x = 'Outside'; // Global variable
-function convert(){
-  global $x; // make it global
-  $x = 'Inside'; // Local variable
-}
 
-echo $x;
-convert();
-echo $x;
-echo $x;
+$number = 10;
+
+$number = 'Edwin';
+echo $number. '<br>';
+
+define('NAME', 1000);
+echo NAME;
 
 ?>
 </body>

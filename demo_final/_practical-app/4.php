@@ -1,20 +1,33 @@
 <?php include "functions.php" ?>
 <?php include "includes/header.php" ?>
 
-	<section class="content">
+<section class="content">
 
-	<aside class="col-xs-4">
+  <aside class="col-xs-4">
 
-		<?php Navigation();?>
-			
-		
-	</aside><!--SIDEBAR-->
+    <?php Navigation();?>
 
 
-<article class="main-content col-xs-8">
+  </aside>
+  <!--SIDEBAR-->
 
-	
-	<?php  
+
+  <article class="main-content col-xs-8">
+
+
+    <?php  
+
+	function calculate(){
+		return 1+2;
+	}
+	echo calculate();
+	echo '<br>';
+
+	function parameter($message){
+		echo $message;
+	}
+	parameter('Hello student');
+
 
 /*  Step1: Define a function and make it return a calculation of 2 numbers
 
@@ -30,7 +43,8 @@
 
 
 
-</article><!--MAIN CONTENT-->
+  </article>
+  <!--MAIN CONTENT-->
 
 
-<?php include "includes/footer.php" ?>
+  <?php include "includes/footer.php" ?>
