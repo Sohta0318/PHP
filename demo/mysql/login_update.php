@@ -2,6 +2,13 @@
 
 <?php include "functions.php"; ?>
 
+<?php 
+if(isset($_POST['submit'])){
+  updateTable();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +24,7 @@
 <body>
   <div class="container">
     <div class="col-sm-6">
-      <form action="login_create.php" method="post">
+      <form action="login_update.php" method="post">
         <div class="form-group"><label for="username">Username</label><input id="username" name="username" type="text"
             class="form-control"></div>
         <div class="form-group"><label for="password">Password</label><input id="password" name="password"
