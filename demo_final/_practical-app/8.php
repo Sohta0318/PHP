@@ -1,21 +1,28 @@
 <?php include "functions.php" ?>
 <?php include "includes/header.php" ?>
 
-	<section class="content">
+<section class="content">
 
-		<aside class="col-xs-4">
+  <aside class="col-xs-4">
 
-		<?php Navigation();?>
-			
-			
-		</aside><!--SIDEBAR-->
+    <?php Navigation();?>
 
 
-		
-	<article class="main-content col-xs-8">
-	
-	
-	<?php  
+  </aside>
+  <!--SIDEBAR-->
+
+
+
+  <article class="main-content col-xs-8">
+
+
+    <?php  
+		$sample = 'Hello';
+		$hash = '$2a$07$';
+		$salt = 'iusesomecrazystrings22';
+		$hashF_and_salt = $hash.$salt;
+		$hashed = crypt($sample,$hashF_and_salt);
+		echo $hashed;
 
 	/*  Step 1 -Make a variable with some text as value
 
@@ -33,5 +40,6 @@
 
 
 
-</article><!--MAIN CONTENT-->
-<?php include "includes/footer.php" ?>
+  </article>
+  <!--MAIN CONTENT-->
+  <?php include "includes/footer.php" ?>
