@@ -40,6 +40,14 @@
               <div class="form-group"><input class="btn btn-primary" type="submit" name="submit" value="Add Category">
               </div>
             </form>
+
+            <?php 
+            if(isset($_GET['edit'])){
+              $cat_id = $_GET['edit'];
+              include 'includes/update_categories.php';
+            }
+            ?>
+
           </div>
           <div class="col-xs-6">
             <?php 
@@ -65,6 +73,7 @@ while($row = mysqli_fetch_assoc($select_all_categories)){
                   <td><?php echo $cat_id; ?></td>
                   <td><?php echo $cat_title; ?></td>
                   <td><a href="categories.php?delete=<?php echo $cat_id; ?>">Delete</a></td>
+                  <td><a href="categories.php?edit=<?php echo $cat_id; ?>">Edit</a></td>
                 </tr>
 
                 <!-- // echo "<tr>";
@@ -72,6 +81,21 @@ while($row = mysqli_fetch_assoc($select_all_categories)){
   // echo "<td>{$cat_title}</td>";
   // echo "</tr>"; -->
                 <?php
+                }
+                ?>
+
+                <?php // Delete category
+                if(isset($_GET['delete'])){
+                  $the_cat_id = $_GET['delete'];
+                  $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
+
+                  $delete_query= mysqli_query($connection,$query);
+                  
+                  if(!$delete_query){
+                    die('QUERY FAILED'.mysqli_error($connection));
+                  }else{
+                    header("Location: categories.php");
+                  }
                 }
                 ?>
 
