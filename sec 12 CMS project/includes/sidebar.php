@@ -23,9 +23,6 @@
     <?php 
 $query = 'SELECT * FROM categories ';
 $select_all_categories_sidebar = mysqli_query($connection,$query);
-
-
-
 ?>
 
 
