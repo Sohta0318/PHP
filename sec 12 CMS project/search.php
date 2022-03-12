@@ -13,18 +13,30 @@
     <div class="col-md-8">
 
       <?php 
-      $query = 'SELECT * FROM posts';
+if(isset($_POST['submit'])){
+  $search =  $_POST['search'];
+  echo $search;
 
-      $select_all_posts_query = mysqli_query($connection,$query);
+  $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+  $search_query = mysqli_query($connection, $query);
 
-while($row = mysqli_fetch_assoc($select_all_posts_query)){
-  $post_title = $row['post_title'];
-  $post_author = $row['post_author'];
-  $post_date = $row['post_date'];
-  $post_image = $row['post_image'];
-  $post_content = $row['post_content'];
+  if(!$search_query){
+    die('QUERY FAILED'. mysqli_error($connection));
+  }
 
-  ?>
+  $count = mysqli_num_rows($search_query);
+  if($count == 0){
+    echo "<h1>No result</h1>";
+  }else{
+
+while($row = mysqli_fetch_assoc($search_query)){
+$post_title = $row['post_title'];
+$post_author = $row['post_author'];
+$post_date = $row['post_date'];
+$post_image = $row['post_image'];
+$post_content = $row['post_content'];
+
+?>
 
 
 
@@ -55,8 +67,16 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
 
 
 
-      }
-      ?>
+    }
+  }
+  
+}
+    ?>
+
+
+
+
+
 
 
 
