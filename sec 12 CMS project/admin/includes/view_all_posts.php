@@ -33,7 +33,18 @@ $post_tags = $row['post_tags'];
       <td><?php echo $post_id;?></td>
       <td><?php echo $post_author;?></td>
       <td><?php echo $post_title;?></td>
-      <td><?php echo $post_category_id;?></td>
+
+      <td><?php 
+
+      
+      $query = "SELECT * FROM categories WHERE cat_id = $post_category_id ";
+    $select_all_categories_id = mysqli_query($connection,$query);
+    while($row = mysqli_fetch_assoc($select_all_categories_id)){
+    $cat_id = $row['cat_id'];
+    $cat_title = $row['cat_title'];
+    echo $cat_title;
+    }
+      ?></td>
       <td><?php echo $post_status;?></td>
       <td><img width="100" src="../images/<?php echo $post_image;?>"></td>
       <td><?php echo $post_tags;?></td>
