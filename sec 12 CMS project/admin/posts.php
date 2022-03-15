@@ -24,11 +24,11 @@
           }
 
             switch($source){
-              case '34';
-                echo 'NICE 34';
+              case 'add_post';
+              include 'includes/add_post.php';
                 break;
-              case '100';
-                echo 'NICE 100';
+              case 'edit_post';
+                include 'includes/edit_post.php';
                 break;
               case '24';
                 echo 'NICE 24';
@@ -38,6 +38,8 @@
                 break;
             }
           
+
+        
           ?>
 
         </div>

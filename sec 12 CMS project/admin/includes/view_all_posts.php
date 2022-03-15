@@ -39,6 +39,8 @@ $post_tags = $row['post_tags'];
       <td><?php echo $post_tags;?></td>
       <td><?php echo $post_comment_count;?></td>
       <td><?php echo $post_date;?></td>
+      <td><a href="posts.php?source=edit_post&p_id=<?php echo $post_id;?>">Edit</a></td>
+      <td><a href="posts.php?delete=<?php echo $post_id;?>">Delete</a></td>
     </tr>
     <?php
 }
@@ -48,3 +50,14 @@ $post_tags = $row['post_tags'];
 
   </tbody>
 </table>
+
+<?php 
+if(isset($_GET['delete'])){
+  $post_id = $_GET['delete'];
+
+  $query= "DELETE FROM posts WHERE post_id = $post_id";
+  $delete_query = mysqli_query($connection,$query);
+  
+  confirmQuery($delete_query);
+}
+?>
