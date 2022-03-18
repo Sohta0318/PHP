@@ -26,9 +26,7 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
   $post_content = substr($row['post_content'],0,100);
   $post_status = $row['post_status'];
 
-  if($post_status !== 'published'){
-    echo "<h1 class='text-center'>No Posts Sorry</h1>";
-  }else{
+  if($post_status == 'published'){
 
   ?>
 

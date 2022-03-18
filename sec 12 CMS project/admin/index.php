@@ -147,6 +147,21 @@
       </div>
       <!-- /.row -->
 
+      <?php 
+      $query = "SELECT * FROM posts WHERE post_status = 'draft'";
+      $select_all_draft_posts = mysqli_query($connection,$query);
+      $post_draft_counts = mysqli_num_rows($select_all_draft_posts);
+
+      $query = "SELECT * FROM comments WHERE comment_status = 'unapproved'";
+      $select_all_unapproved_comments = mysqli_query($connection,$query);
+      $unapproved_comment_counts = mysqli_num_rows($select_all_unapproved_comments);
+      
+      $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
+      $select_all_subscribers = mysqli_query($connection,$query);
+      $subscriber_counts = mysqli_num_rows($select_all_subscribers);
+      
+      ?>
+
       <div class="row">
         <script type="text/javascript">
         google.charts.load('current', {
@@ -156,8 +171,29 @@
 
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales'],
-            ['2014', 1000]
+            ['Date', 'Count'],
+
+            <?php 
+            // $element_text = ['Active Posts', 'Categories', 'Users', 'Comments'];
+            // $element_count = [$post_counts, $category_counts, $user_counts, $comment_counts];
+            
+            // for($i = 0; $i < 4; $i++){
+                // echo "['{$element_text[$i]}'". " ,"." {$element_count[$i]}],";
+              // }
+              
+
+
+
+              $elements = ['Active Posts' => $post_counts, 'Draft Posts'=>$post_draft_counts, 'Comments'=>$comment_counts, 'Pending Comments'=>$unapproved_comment_counts,'Users'=>$user_counts,'Subscribers'=>$subscriber_counts, 'Categories'=>$category_counts];
+              
+              foreach ($elements as $key => $value) {
+                echo "['$key', $value], ";
+              }
+            ?>
+
+
+
+            // ['Posts', 1000]
 
           ]);
 

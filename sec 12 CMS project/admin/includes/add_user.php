@@ -16,6 +16,8 @@ if(isset($_POST['create_user'])){
 
             confirmQuery($add_query);
             
+            echo "User Created: ". "". "<a href='users.php'>View Users</a>";
+            
 }
 
 ?>
