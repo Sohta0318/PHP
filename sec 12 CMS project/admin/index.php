@@ -148,6 +148,10 @@
       <!-- /.row -->
 
       <?php 
+      $query = "SELECT * FROM posts WHERE post_status = 'published'";
+      $select_all_published_posts = mysqli_query($connection,$query);
+      $post_published_counts = mysqli_num_rows($select_all_published_posts);
+
       $query = "SELECT * FROM posts WHERE post_status = 'draft'";
       $select_all_draft_posts = mysqli_query($connection,$query);
       $post_draft_counts = mysqli_num_rows($select_all_draft_posts);
@@ -184,7 +188,7 @@
 
 
 
-              $elements = ['Active Posts' => $post_counts, 'Draft Posts'=>$post_draft_counts, 'Comments'=>$comment_counts, 'Pending Comments'=>$unapproved_comment_counts,'Users'=>$user_counts,'Subscribers'=>$subscriber_counts, 'Categories'=>$category_counts];
+              $elements = ['All Posts'=>$post_counts,'Active Posts' => $post_published_counts, 'Draft Posts'=>$post_draft_counts, 'Comments'=>$comment_counts, 'Pending Comments'=>$unapproved_comment_counts,'Users'=>$user_counts,'Subscribers'=>$subscriber_counts, 'Categories'=>$category_counts];
               
               foreach ($elements as $key => $value) {
                 echo "['$key', $value], ";

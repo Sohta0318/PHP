@@ -53,9 +53,9 @@ move_uploaded_file($post_image_temp, "../images/$post_image");
  
  $update_post = mysqli_query($connection, $query);
 
-          
-
           confirmQuery($update_post);
+
+          echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id=$post_id'>View Post</a> or <a href='posts.php'>Edit More Posts</a></p>";
 
 }
 ?>
@@ -92,9 +92,18 @@ move_uploaded_file($post_image_temp, "../images/$post_image");
   </div>
 
   <div class="form-group">
-    <label for="post_status">Post Status</label>
-    <input type="text" class="form-control" name="post_status" value="<?php echo $post_status?>" />
+    <select name="post_status" id="">
+      <option value="<?php echo $post_status;?>"><?php echo $post_status;?></option>
+      <?php 
+      if($post_status === 'draft'){
+        echo "<option value='published'>Published</option>";
+      }else{
+        echo "<option value='draft'>Draft</option>";
+      }
+      ?>
+    </select>
   </div>
+
 
   <div class="form-group">
     <label for="post_image">Post Image</label>
@@ -108,8 +117,9 @@ move_uploaded_file($post_image_temp, "../images/$post_image");
   </div>
 
   <div class="form-group">
-    <label for="post_content">Post Content</label>
-    <textarea class="form-control" name="post_content" id="" rows="10" cols="30"><?php echo $post_content?></textarea>
+    <label for="summernote">Post Content</label>
+    <textarea class="form-control" name="post_content" id="summernote" rows="10"
+      cols="30"><?php echo $post_content?></textarea>
   </div>
 
   <div class="form-group">
