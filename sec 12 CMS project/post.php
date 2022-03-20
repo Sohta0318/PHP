@@ -67,11 +67,12 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
 
       <?php 
       if(isset($_POST['create_comment'])){
+        
           $post_id = $_GET['p_id'];
           $comment_author = $_POST['comment_author'];
           $comment_email = $_POST['comment_email'];
           $comment_content = $_POST['comment_content'];
-
+          if(!empty($comment_author)&& !empty($comment_email)&&!empty($comment_content)){
           $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
           $query .= "VALUES ($post_id, '$comment_author', '$comment_email', '$comment_content', 'unapproved', now())";
 
@@ -84,6 +85,9 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
 
       $update_comment_count_query = mysqli_query($connection,$query);
       confirmQuery($update_comment_count_query);
+          }else{
+            echo "<script>alert('Fields can not be empty!')</script>";
+          }
       }
 
       
