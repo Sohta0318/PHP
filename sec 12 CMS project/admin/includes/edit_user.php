@@ -25,13 +25,22 @@ if(isset($_POST['edit_user'])){
 
   // move_uploaded_file($post_image_temp,"./image/$post_image");
 
+  $query = "SELECT randSalt FROM users";
+     $select_randSalt_query = mysqli_query($connection,$query);
+     confirmQuery($select_randSalt_query);
+
+     $row = mysqli_fetch_array($select_randSalt_query);
+         $salt = $row['randSalt'];
+
+         $hashed_password = crypt($user_password,$salt);
+
   $query = "UPDATE users SET "; 
   $query .="user_firstname = '{$user_firstname}', ";
   $query .="user_lastname = '{$user_lastname}', "; 
   $query .="user_role = '{$user_role}', ";
   $query .="username = '{$username}', ";
   $query .="user_email = '{$user_email}', ";
-  $query .="user_password = '{$user_password}' ";
+  $query .="user_password = '{$hashed_password}' ";
   $query .="WHERE user_id = {$user_id} ";
 
             $edit_query=mysqli_query($connection,$query);

@@ -29,6 +29,10 @@ while($row = mysqli_fetch_assoc($select_all_categories_query)){
         <li>
           <a href="admin">Admin</a>
         </li>
+        <li>
+          <a href="registration.php">Registration</a>
+        </li>
+
         <?php 
         session_start();
         if(isset($_SESSION['username'])){

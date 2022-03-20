@@ -9,6 +9,15 @@ if(isset($_POST['create_user'])){
 
   // move_uploaded_file($post_image_temp,"./image/$post_image");
 
+  $query = "SELECT randSalt FROM users";
+     $select_randSalt_query = mysqli_query($connection,$query);
+     confirmQuery($select_randSalt_query);
+
+     $row = mysqli_fetch_array($select_randSalt_query);
+         $salt = $row['randSalt'];
+
+         $user_password = crypt($user_password,$salt);
+
             $query = "INSERT INTO users(user_firstname, user_lastname, user_role, username, user_email, user_password) ";
             $query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}') "; 
 

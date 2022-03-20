@@ -97,7 +97,8 @@ $post_tags = $row['post_tags'];
         <td><?php echo $post_date;?></td>
         <td><a href="../post.php?p_id=<?php echo $post_id;?>">View Post</a></td>
         <td><a href="posts.php?source=edit_post&p_id=<?php echo $post_id;?>">Edit</a></td>
-        <td><a href="posts.php?delete=<?php echo $post_id;?>">Delete</a></td>
+        <td><a onclick="javascript: return confirm('Are you sure?')"
+            href="posts.php?delete=<?php echo $post_id;?>">Delete</a></td>
       </tr>
       <?php
 }
