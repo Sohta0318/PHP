@@ -15,8 +15,13 @@
       <?php 
 if(isset($_GET['p_id'])){
     $post_id = $_GET['p_id'];
-}
 
+    if($_SERVER['REQUEST_METHOD'] !== 'POST'){
+
+    $view_query = "UPDATE posts SET post_views_count = post_views_count+1 WHERE post_id = $post_id";
+    $end_query = mysqli_query($connection,$view_query);
+confirmQuery($end_query);
+    }
 
 
 
@@ -62,10 +67,17 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
 
 
 
+      }}else{
+        header('Location: index.php');
       }
       ?>
 
+      <!--  COMMENT -->
+
       <?php 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+
       if(isset($_POST['create_comment'])){
         
           $post_id = $_GET['p_id'];
@@ -88,9 +100,11 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
           }else{
             echo "<script>alert('Fields can not be empty!')</script>";
           }
-      }
+      } // end of if set check
 
-      
+
+      header("Location: post.php?p_id=$post_id");
+    }
       
       ?>
 
