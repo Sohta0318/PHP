@@ -1,10 +1,6 @@
 <?php include 'includes/admin_header.php';?>
 <div id="wrapper">
-  <?php 
-// if($connection){
-//     echo 'Connected';
-// }
-?>
+
   <!-- Navigation -->
   <?php include 'includes/admin_navigation.php';?>
 
@@ -24,7 +20,6 @@
             echo $_SESSION['username']
             ?></small>
           </h1>
-
         </div>
       </div>
       <!-- /.row -->

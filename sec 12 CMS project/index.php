@@ -20,8 +20,9 @@ if(isset($_GET['page'])){
   $page = $_GET['page'];
 
 }else{
-  $page = '';
+  $page = 1;
 }
+
 
 if($page=''||$page=1){
   $page_1=0;

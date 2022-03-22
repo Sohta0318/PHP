@@ -9,14 +9,16 @@
 
      if(!empty($username) && !empty($email) && !empty($password)){
 
-     $query = "SELECT randSalt FROM users";
-     $select_randSalt_query = mysqli_query($connection,$query);
-     confirmQuery($select_randSalt_query);
+      $password = password_hash($password,PASSWORD_BCRYPT,array('cost'=>12));
 
-     $row = mysqli_fetch_array($select_randSalt_query);
-         $salt = $row['randSalt'];
+    //  $query = "SELECT randSalt FROM users";
+    //  $select_randSalt_query = mysqli_query($connection,$query);
+    //  confirmQuery($select_randSalt_query);
 
-         $password = crypt($password,$salt);
+    //  $row = mysqli_fetch_array($select_randSalt_query);
+    //      $salt = $row['randSalt'];
+
+    //      $password = crypt($password,$salt);
 
          $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
          $query .= "VALUES ('$username', '$email', '$password', 'subscriber')";
