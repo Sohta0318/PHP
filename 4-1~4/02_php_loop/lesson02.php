@@ -6,7 +6,15 @@
 // 789
 
 function square($num){
-for($i = 1; $i <=$num; $i++){
+  $column = $num/3;
+  $row = 1;
+for($i = 0; $i <$column; $i++){
+for ($y=$row; $y < $row+3; $y++) { 
+  echo $y; //1-1,1-2,1-3,2-4,2-5,2-6,3-6,3-7,3-8,3-9
+}
+echo "\n";
+$row = $row+3;
+}
+}
 
-}
-}
+square(9);
