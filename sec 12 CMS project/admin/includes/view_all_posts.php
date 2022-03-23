@@ -63,7 +63,7 @@ if(isset($_POST['checkBoxArray'])){
       <tr>
         <th><input type="checkbox" name="" id="selectAllBoxes"></th>
         <th>Id</th>
-        <th>Author</th>
+        <th>Users</th>
         <th>Title</th>
         <th>Category</th>
         <th>Status</th>
@@ -86,6 +86,7 @@ if(isset($_POST['checkBoxArray'])){
 while($row = mysqli_fetch_assoc($select_all_posts)){
 $post_id = $row['post_id'];
 $post_author = $row['post_author'];
+$post_user = $row['post_user'];
 $post_title = $row['post_title'];
 $post_status = $row['post_status'];
 $post_image = $row['post_image'];
@@ -98,7 +99,17 @@ $post_views_count = $row['post_views_count'];
       <tr>
         <td><input type="checkbox" class="checkBoxes" name="checkBoxArray[]" value="<?php echo $post_id;?>"></td>
         <td><?php echo $post_id;?></td>
-        <td><?php echo $post_author;?></td>
+
+
+        <?php 
+
+if(isset($post_author) || !empty($post_author)){
+  echo "<td>$post_author</td>";
+}elseif(isset($post_user) || !empty($post_user)){
+  echo "<td>$post_user</td>";
+}
+?>
+
         <td><?php echo $post_title;?></td>
 
         <td><?php 
@@ -115,7 +126,26 @@ $post_views_count = $row['post_views_count'];
         <td><?php echo $post_status;?></td>
         <td><img width="100" src="../images/<?php echo $post_image;?>"></td>
         <td><?php echo $post_tags;?></td>
-        <td><?php echo $post_comment_count;?></td>
+
+        <?php 
+$query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+$send_comment_query = mysqli_query($connection,$query);
+
+
+$row = mysqli_fetch_array($send_comment_query);
+if(!empty($row)){
+  $comment_id = $row['comment_id'];
+  } 
+  $count_comments = mysqli_num_rows($send_comment_query);
+
+
+
+?>
+
+        <td><a href="post_comments.php?id=<?php echo $post_id;?>"><?php echo $count_comments;?></a></td>
+
+
+
         <td><?php echo $post_date;?></td>
         <td><a href="../post.php?p_id=<?php echo $post_id;?>">View Post</a></td>
         <td><a href="posts.php?source=edit_post&p_id=<?php echo $post_id;?>">Edit</a></td>

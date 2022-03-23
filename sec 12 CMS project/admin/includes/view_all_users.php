@@ -96,6 +96,7 @@ if(isset($_GET['change_to_subscriber'])){
 
 
 if(isset($_GET['delete'])){
+  if(isset($_SESSION['user_role']) && $_SESSION['user_role']=='admin'){
   $user_id = $_GET['delete'];
 
   $query= "DELETE FROM users WHERE user_id = $user_id";
@@ -103,5 +104,6 @@ if(isset($_GET['delete'])){
   header('Location: users.php');
   
   confirmQuery($delete_query);
+  }
 }
 ?>

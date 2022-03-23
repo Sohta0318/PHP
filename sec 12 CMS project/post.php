@@ -92,8 +92,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           confirmQuery($comment_query);
 
 
-          $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
-      $query .= "WHERE post_id = $post_id";
+      //     $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+      // $query .= "WHERE post_id = $post_id";
 
       $update_comment_count_query = mysqli_query($connection,$query);
       confirmQuery($update_comment_count_query);

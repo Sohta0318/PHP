@@ -16,7 +16,8 @@ if(isset($_POST['create_user'])){
      $row = mysqli_fetch_array($select_randSalt_query);
          $salt = $row['randSalt'];
 
-         $user_password = crypt($user_password,$salt);
+        //  $user_password = crypt($user_password,$salt);
+         $user_password = password_hash($user_password, PASSWORD_BCRYPT,array('cost'=>12));
 
             $query = "INSERT INTO users(user_firstname, user_lastname, user_role, username, user_email, user_password) ";
             $query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}') "; 

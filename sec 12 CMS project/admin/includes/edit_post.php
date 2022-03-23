@@ -6,7 +6,7 @@ $query = "SELECT * FROM posts WHERE post_id = $post_id";
   $fetch_post_query=mysqli_query($connection,$query);
   confirmQuery($fetch_post_query);
   while($row = mysqli_fetch_assoc($fetch_post_query)){
-$post_author = $row['post_author'];
+$post_user = $row['post_user'];
 $post_title = $row['post_title'];
 $post_status = $row['post_status'];
 $post_image = $row['post_image'];
@@ -21,7 +21,7 @@ $post_content = $row['post_content'];
 if (isset($_POST['update_post'])){
     
   $post_title = mysqli_real_escape_string($connection, $_POST['post_title']);
-$post_author = mysqli_real_escape_string($connection, $_POST['post_author']);
+$post_user = mysqli_real_escape_string($connection, $_POST['post_user']);
   $post_category_id = $_POST['post_category'];
   $post_status = $_POST['post_status'];
   $post_image = $_FILES['image']['name'];
@@ -36,7 +36,7 @@ move_uploaded_file($post_image_temp, "../images/$post_image");
  $query .="post_title = '{$post_title}', ";
  $query .="post_category_id = {$post_category_id}, "; 
  $query .="post_date = now(), ";
- $query .="post_author = '{$post_author}', ";
+ $query .="post_user = '{$post_user}', ";
  $query .="post_status = '{$post_status}', ";
  $query .="post_tags = '{$post_tags}', ";
  $query .="post_content = '{$post_content}', ";
@@ -87,8 +87,22 @@ move_uploaded_file($post_image_temp, "../images/$post_image");
   </div>
 
   <div class="form-group">
-    <label for="title">Post Author</label>
-    <input type="text" class="form-control" name="post_author" value="<?php echo $post_author?>" />
+    <label for="author">Users</label>
+    <select name="post_user" id="author">
+      <option value="<?php echo $post_user?>"><?php echo $post_user?></option>
+      <?php 
+      $query = "SELECT * FROM users";
+      $select_users = mysqli_query($connection,$query);
+      confirmQuery($select_users);
+      while($row = mysqli_fetch_assoc($select_users)){
+      $user_id = $row['user_id'];
+      $username = $row['username'];
+      ?>
+      <option value="<?php echo $username?>"><?php echo $username?></option>
+      <?php
+      }
+      ?>
+    </select>
   </div>
 
   <div class="form-group">

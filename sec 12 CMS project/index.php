@@ -13,7 +13,7 @@
     <div class="col-md-8">
 
       <?php 
-      $per_page=2;
+      $per_page=10;
 if(isset($_GET['page'])){
 
   
@@ -44,7 +44,7 @@ $all_posts_count = ceil($all_posts_count/$per_page);
 while($row = mysqli_fetch_assoc($select_all_posts_query)){
   $post_id = $row['post_id'];
   $post_title = $row['post_title'];
-  $post_author = $row['post_author'];
+  $post_user = $row['post_user'];
   $post_date = $row['post_date'];
   $post_image = $row['post_image'];
   $post_content = substr($row['post_content'],0,100);
@@ -67,7 +67,7 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
       </h2>
       <p class="lead">
         by <a
-          href="author_posts.php?author=<?php echo $post_author;?>&p_id=<?php echo $post_id;?>"><?php echo $post_author;?></a>
+          href="author_posts.php?author=<?php echo $post_user;?>&p_id=<?php echo $post_id;?>"><?php echo $post_user;?></a>
       </p>
       <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date;?></p>
       <hr>
@@ -109,7 +109,11 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)){
     <?php 
  
         for ($i=1; $i <= $all_posts_count; $i++) {
-          $page = $_GET['page'];
+          if(isset($_GET['page'])){
+            $page = $_GET['page'];
+          }else{
+            $page = 1;
+          }
           if ($i == $page) {
           
             echo "<li><a class='active_link' href='index.php?page={$i}'>{$i}</a></li>";
