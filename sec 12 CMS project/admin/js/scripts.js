@@ -32,4 +32,12 @@ $(document).ready(function () {
   setInterval(() => {
     loadUserOnline();
   }, 500);
+
+  $(".delete_link").on("click", function () {
+    const id = $(this).attr("rel");
+    const delete_url = `posts.php?delete=${id}`;
+    $(".modal_delete_link").attr("href", delete_url);
+
+    $("#myModal").modal("show");
+  });
 });
