@@ -107,5 +107,20 @@ function deleteCategories(){
   }
 }
 
+function recordCount($table){
+  global $connection;
+  $query = "SELECT * FROM $table";
+  $select_all_comments = mysqli_query($connection,$query);
+  return mysqli_num_rows($select_all_comments);
+}
+
+function checkStatus($table, $column,$status){
+  global $connection;
+  $query = "SELECT * FROM $table WHERE $column = '$status'";
+      $result = mysqli_query($connection,$query);
+       return mysqli_num_rows($result);
+  
+}
+
 
 ?>

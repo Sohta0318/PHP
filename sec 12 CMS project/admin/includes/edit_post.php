@@ -75,12 +75,18 @@ move_uploaded_file($post_image_temp, "../images/$post_image");
       $query = "SELECT * FROM categories";
       $select_all_categories = mysqli_query($connection,$query);
       confirmQuery($select_all_categories);
+      
       while($row = mysqli_fetch_assoc($select_all_categories)){
       $cat_id = $row['cat_id'];
       $cat_title = $row['cat_title'];
       ?>
-      <option value="<?php echo $cat_id?>"><?php echo $cat_title?></option>
+
       <?php
+      if($cat_id == $post_category_id){
+        echo "<option selected value='$cat_id'>$cat_title</option>";
+      }else{
+        echo "<option value='$cat_id'>$cat_title</option>";
+      }
       }
       ?>
     </select>
@@ -133,7 +139,7 @@ move_uploaded_file($post_image_temp, "../images/$post_image");
   <div class="form-group">
     <label for="summernote">Post Content</label>
     <textarea class="form-control" name="post_content" id="summernote" rows="10"
-      cols="30"><?php echo $post_content?></textarea>
+      cols="30"><?php echo str_replace('\r\n','</br>',$post_content)?></textarea>
   </div>
 
   <div class="form-group">

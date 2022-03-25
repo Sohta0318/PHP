@@ -21,11 +21,17 @@ $arr = [99, 3, 12, 45, 60, 100, 31, 7, 28];
 $arr = [99, 3, 12, 45, 60, 100, 31, 7, 28];
 
 function sortNum($array){
-    $min = $array[0];
-for ($i=0; $i <sizeof($array) ; $i++) { 
-    $min = $min > $array[$i]? $array[$i]: $min;
-}
-echo $min;
+
+    for ($i = 1; $i < sizeof($array); $i++)
+    for ($j = 0; $j < $i; $j++)
+        if ($array[$i] < $array[$j]) {
+          $x = $array[$i];
+          $array[$i] = $array[$j];
+          $array[$j] = $x;
+        }
+
+print_r($array);
+
 }
 
 // ここで並び替え処理
