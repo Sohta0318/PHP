@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  width: 100%;
+}
+header {
+  position: relative;
+  width: 100%;
+  min-height: 680px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../img/eyecatch.jpg);
+}
+
+.concept {
+  width: 90%;
+  margin: auto;
+  position: absolute;
+  top: 250px;
+  left: 5%;
+  color: white;
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: bold;
+}
+nav {
+  position: relative;
+  top: 0;
+  margin: auto;
+  width: 100%;
+  padding: 0 5%;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 15px;
+  color: white;
+  transition: all 0.5s ease;
+}

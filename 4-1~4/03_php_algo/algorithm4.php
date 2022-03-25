@@ -57,6 +57,15 @@ function judge($cards) {
     // この関数内に処理を記述
 
     // カードの不正チェック
+    $sameCard = array_unique($cards);
+  $card_count = count($sameCard);
+  foreach($cards as $card) {
+    if ($card['number'] < 1||$card['number'] > 13 ) {
+      return "手札は不正";
+    }if ($card_count < 5) {
+      return "手札は不正";
+    }
+  }
 
     // カードの並び替え
 
@@ -64,18 +73,20 @@ function judge($cards) {
 
     // 結果を返す
 }
+judge($cards)
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="utf-8">
-<title>ポーカー役判定</title>
+  <meta charset="utf-8">
+  <title>ポーカー役判定</title>
 </head>
+
 <body>
-    <section>
-        <p>手札は</p>
-        <p><?php foreach($cards as $card): ?><?=$card['suit'].$card['number'] ?><?php endforeach; ?></p>
-        <p>役は<?=judge($cards) ?>です。</p>
-    </section>
+  <section>
+
+  </section>
 </body>
+
 </html>
