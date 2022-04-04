@@ -2,38 +2,59 @@
 <?php  include "includes/header.php"; ?>
 
 <?php 
- if(isset($_POST['submit'])){
-     $username =mysqli_real_escape_string($connection, $_POST['username']);
-     $email = mysqli_real_escape_string($connection,$_POST['email']);
-     $password = mysqli_real_escape_string($connection,$_POST['password']);
+//  if(isset($_POST['submit'])){
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+  $username =mysqli_real_escape_string($connection, $_POST['username']);
+  $email = mysqli_real_escape_string($connection,$_POST['email']);
+  $password = mysqli_real_escape_string($connection,$_POST['password']);
 
-     if(!empty($username) && !empty($email) && !empty($password)){
+  $error = [
+    'username'=>'',
+    'email'=>'',
+    'password'=>'',
+  ];
 
-      $password = password_hash($password,PASSWORD_BCRYPT,array('cost'=>12));
+  
 
-    //  $query = "SELECT randSalt FROM users";
-    //  $select_randSalt_query = mysqli_query($connection,$query);
-    //  confirmQuery($select_randSalt_query);
+  if(strlen($username) < 4){
+    $error['username'] = 'Username must to be longer than 4';
+  }
 
-    //  $row = mysqli_fetch_array($select_randSalt_query);
-    //      $salt = $row['randSalt'];
+  if($username == ''){
+    $error['username'] = 'Username can not be empty';
+  }
 
-    //      $password = crypt($password,$salt);
 
-         $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
-         $query .= "VALUES ('$username', '$email', '$password', 'subscriber')";
+  if(username_exists($username)){
+    $error['username'] = 'Username already exists';
+  }
 
-         $register_user_query = mysqli_query($connection,$query);
-         confirmQuery($register_user_query);
+  if($email == ''){
+    $error['email'] = 'Email can not be empty';
+  }
 
-         $message = "Registration successfully has been submitted";
-     
-     }else{
-         $message = "Fields can not be empty";
-     }
+  if(email_exists($email)){
+    $error['email'] = 'Email already exists'. "<a href='index.php'>Please login</a>";
+  }
 
- }else{
-     $message = "";
+  if($password == ''){
+    $error['password'] = 'Password can not be empty';
+  }
+
+
+foreach ($error as $key => $value) {
+  # code...
+  if(empty($value)){
+  unset($error[$key]);
+  }
+}
+
+if(empty($error)){
+  register_user($username,$email,$password);
+  login_user($username,$password);
+}
+
+  
  }
  
  ?>
@@ -55,19 +76,24 @@
             <h1>Register</h1>
             <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
 
-              <h6 class="text-center"><?php echo $message;?></h6>
+
               <div class="form-group">
                 <label for="username" class="sr-only">username</label>
                 <input type="text" name="username" id="username" class="form-control"
-                  placeholder="Enter Desired Username">
+                  placeholder="Enter Desired Username" autocomplete="on"
+                  value="<?php echo isset($_POST['username']) ? $_POST['username']: ''?>">
+                <p><?php echo isset($error['username']) ? $error['username']: ''?></p>
               </div>
               <div class="form-group">
                 <label for="email" class="sr-only">Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com"
+                  value="<?php echo isset($_POST['email']) ? $_POST['email']: ''?>">
+                <p><?php echo isset($error['email']) ? $error['email']: ''?></p>
               </div>
               <div class="form-group">
                 <label for="password" class="sr-only">Password</label>
                 <input type="password" name="password" id="key" class="form-control" placeholder="Password">
+                <p><?php echo isset($error['password']) ? $error['password']: ''?></p>
               </div>
 
               <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block"

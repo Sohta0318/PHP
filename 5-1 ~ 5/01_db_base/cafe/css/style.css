@@ -1,0 +1,439 @@
+html {
+	width: 100%;
+	height: 100%;
+	background-color: white;	
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+a {
+	cursor: pointer;
+    color: black;
+		text-decoration: none;
+}
+.img {
+	border-radius: 10px;
+}
+.hover {
+	color: black;
+}
+ul {
+	list-style: none;
+}
+
+/* header */
+#header {
+	width: 100%;
+}
+#header_fixed {
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	
+	z-index: 1000;
+	background-color:rgba(0, 0, 0, 0);
+}
+#header_fixed.fixed {
+	background-color: rgba(0,0,0,0.8);
+    z-index: 2;
+    position: fixed;
+		height: 55px;
+    top: 0;
+    transition: all .5s ease;
+}
+#header_fixed img {
+	height: 30px;
+	width: 200px;
+	padding-top: 7px;
+	margin-top:10px;
+	margin-left: 40px;
+}
+#header a {
+    color: white;
+}
+#nav ul {
+	display: flex;
+	justify-content: space-around;
+	padding: 0;
+	margin-top:20px;
+}
+#nav li {
+	margin: 0 50px;
+}
+#modal-open {
+	margin-top: 20px;
+    opacity: 1;
+		margin-right: 7em;
+}
+.modal {
+	z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+		display: none;
+}
+.modal-body {
+	z-index: 10000;
+	width: 40%;
+	background-color: white;
+	border-radius: 12px;
+	position: fixed;
+  top: 22%;
+  left: 30%;
+	display: none;
+}
+
+
+
+.active{
+	opacity: 1;
+  visibility: visible;
+}
+
+.modal-body h2{
+	margin:0;
+	padding: 16px 0;
+	text-align: center;
+}
+.modal-body form {
+	border-top: 0.5px solid black;
+	border-bottom: 0.5px solid black;
+	padding: 20px 0;
+}
+.modal-body p {
+	padding: 0;
+	margin: 0;
+}
+.logins {
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+.logins input {
+	border-radius: 10px;
+	border-width: 0.5px;
+}
+.login_text {
+	width: 90%;
+	height: 40px;
+	margin: 1% 5%;
+}
+#sousin {
+	background-color: rgb(215, 4, 102);
+	color: white;
+}
+.icon {
+	border: 0.5px solid black;
+	width: 90%;
+	height: 40px;
+	margin: 2% 5%;
+	border-radius: 10px;
+}
+.icon img {
+    height: 40px;
+    width: 40px;
+		display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* footer */
+footer {
+	width: 100%;
+	background-color: whitesmoke;
+	padding: 57px 0;
+}
+#make_foot {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+#copy {
+	width: 90%;
+	margin: 0 5%;
+}
+/* index.php */
+#covid {
+		/* position: relative;
+    top: 0;
+    z-index: 1;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    padding: 18px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 8px 5px 5px 680px rgb(180 180 180 / 30%); */
+}
+#contents_top {
+    position: relative;
+	width: 100%;
+	height: 100%;
+}
+#contents_top img {
+	width: 100%;
+	position: relative;
+	height: 680px;
+	object-fit: cover;
+	object-position: center;
+}
+#bgwhite {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* background-color:rgba(255,255,255,0); */
+}
+
+#contents_top h1 {
+	position: absolute;
+	color: white;
+	font-size: 70px;
+	top: 200px;
+  left: 5%;
+	width: 90%;
+	font-size: 64px;
+	line-height: 64px;
+	font-weight: bold;
+}
+
+#city {
+    display: flex;
+	flex-wrap: wrap;
+	width: 95%;
+	margin: 40px 2%;
+}
+.city {
+	width: 15vw;
+	margin: 10px 50px;
+	display: flex;
+}
+.city img {
+    height: 70px;
+    width: 70px;
+}
+.p_city {
+	font-weight: bold;
+	padding: 5px 15px;
+}
+#loca {
+	width: 90%;
+	margin: 40px 5%;
+}
+.p_loca {
+	font-weight: bold;
+}
+#location {
+	display: flex;
+	justify-content: space-around;
+}
+.location {
+	width: 20vw;
+}
+.img_loca {
+	width: 20vw;
+	height: 35vh;
+}
+.goto_img{
+	margin-top: 40px;
+}
+#gotoeats {
+	width: 90%;
+	margin: 0 5%;
+	height: 30em;
+}
+#gotoeat {
+	width: 40%;
+	color: black;
+	padding: 10px;
+	top: 70px;
+  left: 50px;
+	position: relative;
+	z-index: 2;
+	background-color:rgba(255,255,255,0.3);
+}
+#gotoeats img {
+	width: 100%;
+	position: relative;
+	top: -200px;
+	z-index: 1;
+}
+#gotoeat h3{
+	font-size: 42px;
+    font-weight: bold;
+    color: black;
+		margin: 0;
+}
+#gotoeat p{
+	font-size: 18px;
+	font-weight: 100;
+	color: black;
+}
+
+#mcafe {
+	width: 100%;
+	background-color: black;
+	padding:42px 0;
+}
+#make_cafe {
+	width: 90%;
+	margin: 0 5%;
+}
+#make_cafe h2, #make_cafe h3, #make_cafe p {
+	color: white;
+}
+#expe {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+.expe {
+	width: 30%;
+}
+.expe img {
+	width: 100%;
+}
+#host {
+	width: 90%;
+	margin: 0 5%;
+}
+#make_host {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+.host {
+	width: 30%
+}
+.host img {
+	width: 100%;
+}
+
+/* contact.php */
+#contact {
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 60%;
+	margin: 5% auto;
+}
+#contact_h1 {
+	font-size: 20px;
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+#table {
+	width: 90%;
+	margin: 5%;
+}
+#table p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.p_gray {
+	background-color: #f5f5f5;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 1%;
+	font-size: 18px;
+	align-items: center;
+}
+.inquiry{
+	margin: 20px 0;
+}
+#contact_form input {
+	width: 100%;
+	height: 6vh;
+	border-radius: 10px;
+}
+textarea {
+	width: 100%;
+	height: 25vh;
+	border-radius: 10px;
+}
+span {
+	color: red;
+}
+#submit {
+	background-color: rgb(215, 4, 102);
+	color: white;
+}
+#submit:disabled {
+  background-color: #ccc;
+	color: black;
+}
+/* confirm.php */
+.btm_line {
+	border-bottom: 1px solid black;
+	padding-top: 15px;
+}
+.errmsg {
+	color: red;
+}
+.footer_link{
+	padding: 0;
+}
+.footer_link li{
+	margin: 16px 0;
+	font-style: normal;
+	font-weight: normal;
+}
+hr{
+	width: 90%;
+}
+.error{
+	padding: 0;
+  color: red;
+  font-size: 1rem;
+}
+.confirm_btn{
+	padding: 1% 0;
+	display: flex;
+	justify-content: space-between;
+}
+.confirm_btn button{
+	margin-right: 10px;
+	color: white;
+	background-color: rgb(215, 4, 102);
+	width: 100%;
+	font-size: 1.2rem;
+	padding: 10px 2.5px;
+	border: 0;
+	border-radius: 8px;
+	cursor: pointer;
+}
+.confirm_btn a{
+	width: 100%;
+	text-align: center;
+	line-height: 40px;
+	margin-left: 10px;
+	background-color: transparent;
+	border: 2px solid #066;
+	border-radius: 8px;
+	cursor: pointer;
+	color: #066;
+}
+.confirm_message{
+	padding: 5px 10px;
+}
+.mess{
+	padding-bottom: 30px;
+}
+.back_top{
+	text-decoration: underline;
+	color: blue;
+	
+}
+.last{
+	padding-bottom: 20px;
+}

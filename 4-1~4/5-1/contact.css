@@ -1,0 +1,343 @@
+@charset "UTF-8";
+/* reset */
+body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+html {
+
+}
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+.wih {
+  margin: 0 auto;
+  width: 90%;
+}
+
+#head {
+  width: 100%;
+  background-color: rgba(0,0,0,0.8)
+}
+
+.nav-l img {
+  height: 40px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 30px;
+}
+
+.nav-c ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-c {
+  width: 300px;
+  /*センター配置*/
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+
+
+.nav-r {
+  color: white;
+}
+
+.mail-all {
+  width: 60%;
+  margin: 100px auto;
+  border: solid 1px #ccc;
+  border-radius: 20px;
+}
+.ft-top {
+  display: flex;
+  border-bottom: solid 1px rgba(192, 192, 192, 0.5);
+  padding-bottom: 6px;
+}
+
+.ft-box {
+  width: 25%;
+}
+
+.footer {
+  background-color: rgba(192, 192, 192, 0.1);
+  padding:60px 0 60px 0;
+  border-top: solid 1px rgba(192, 192, 192, 0.5);
+}
+
+.co-tl p{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.co-p a{
+  font-size: 14px;
+  display: inline-block;
+  margin: 6px 0 6px 0;
+}
+
+.ft-bottom {
+  padding-top: 30px;
+}
+
+.ft-bottom p{
+  font-size: 14px;
+}
+
+
+
+
+
+.mail-tl {
+  font-size: 18px;
+  padding: 18px 0;
+  border-bottom: solid 1px #ccc;
+}
+
+.mail-tl p {
+  text-align: center;
+  font-weight: 900;
+}
+
+.mail-body {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.pre-tl {
+  border-top: solid 1px #000;
+  border-bottom: solid 1px #000;
+  background-color: #eeeeee;
+  padding: 15px 0 15px 10px;
+  margin-bottom: 20px;
+}
+
+.pre-main {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.red {
+  color: red;
+}
+
+.m-d-top {
+  margin-top: 15px;
+}
+
+.m-d-bottom {
+  margin-bottom: 30px;
+}
+
+.mail-box {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: solid 1px #ccc;
+}
+
+.mail-box2 {
+  margin-top: 5px;
+  width: 100%;
+  height: 300px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: solid 1px #ccc;
+  resize: none;
+  padding-top: 10px;
+}
+
+.mail-ditail p{
+  margin-bottom: 10px;
+  margin-top: 18px;
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(215,4,104);
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  letter-spacing: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.confirmation {
+  font-size: 13px;
+}
+
+.m-d-fi {
+  border-bottom:  solid 1px #ccc;
+}
+
+.ditail {
+  height: 50px;
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.ditail2 {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.btn-pre {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-send {
+  width: 48%;
+  height: 50px;
+  background-color: rgba(215,4,104);
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  letter-spacing: 30px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  width: 48%;
+  height: 50px;
+  background-color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  border: solid 2px #696969;
+  color: #696969;
+  letter-spacing: 30px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.top-page {
+  margin-top: 20px;
+}
+
+.top-page a {
+  text-decoration: underline;
+  color: #8A0868;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+}
+
+table, td, th{
+  border: 1px solid black;
+}
+
+button {
+	background: none;
+	border: none;
+	outline: none;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.m-delete-ok{
+	position:fixed;
+	z-index: 9998;
+	background-color: rgba(0,0,0,0.5);
+	top: 0;
+	left:0;
+	width: 100%;
+	height: 100vh;
+	display: none;
+}
+
+
+.delete2{
+	/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+	position:fixed;
+	z-index: 9999;
+	/*ナビのスタート位置と形状*/
+	top:50%;
+	left:50%;
+	width:100%;
+	transform: translate(-50%, -50%);
+	width: 30%;
+	margin: 0 auto;
+	border: solid 1px #c1c1c1;
+	height: 100px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	background-color: white;
+	display: none;
+}
+
+.dele {
+	height: 100px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+
+.m-delete {
+	position:fixed;
+	z-index: 9998;
+	background-color: rgba(0,0,0,0.5);
+	top: 0;
+	left:0;
+	width: 100%;
+	height: 100vh;
+	display: none;
+}

@@ -16,10 +16,10 @@
 // エ substr($num,$i,1)
 
 function countNumbers($num) {
-  $length = [ X ];
+  $length = [ count($num) ];
   $count = 0;
   for($i=0;$i<$length;$i++) {
-    $str = [ Y ];
+    $str = [ substr($num,$i,$i+1) ];
     if($str === '7') {
       $count++;
     }
@@ -27,4 +27,6 @@ function countNumbers($num) {
 
   return $count;
 }
+
+
 ?>

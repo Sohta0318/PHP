@@ -54,26 +54,56 @@ $cards = [
 ];
 
 function judge($cards) {
-    // この関数内に処理を記述
+  // この関数内に処理を記述
+  $count = array_unique($cards,SORT_REGULAR);
+  $unique = count($count);
 
-    // カードの不正チェック
-    $sameCard = array_unique($cards);
-  $card_count = count($sameCard);
-  foreach($cards as $card) {
-    if ($card['number'] < 1||$card['number'] > 13 ) {
-      return "手札は不正";
-    }if ($card_count < 5) {
-      return "手札は不正";
-    }
+  // カードの不正チェック
+  foreach($cards as $card){
+      if($card["number"] > 13 || $card["number"]<1){
+          return '手札は不正';
+      }elseif($unique < 5){
+          return '手札は不正';
+      }
   }
+  
+  // カードの並び替え
+  asort($cards);
 
-    // カードの並び替え
+  // 役判定
+  $number = array_column($cards,"number");
+  sort($number);
+  $count_value = array_count_values($number);
+  sort($count_value);
 
-    // 役判定
+  $suit = array_column($cards,"suit");
+  $suit_value = array_count_values($suit);
+  sort($suit_value);
 
-    // 結果を返す
+  // 結果を返す
+  if($number == [1,10,11,12,13] && $suit_value == [5]){
+      return '役はロイヤルストレートフラッシュ';
+  }elseif($number == [$number[0],$number[0]+1,$number[0]+2,$number[0]+3,$number[0]+4] && $number[0] < 10 && $suit_value == [5]){
+      return '役はストレートフラッシュ';
+  }elseif($count_value == [1,4]){
+      return '役はフォーカード';
+  }elseif($count_value == [2,3]){
+      return '役はフルハウス';
+  }elseif($count_value == [5]){
+      return '役はフラッシュ';
+  }elseif($number == [$number[0],$number[0]+1,$number[0]+2,$number[0]+3,$number[0]+4] && $number[0] < 10){
+      return '役はストレート';
+  }elseif($count_value == [1,1,3]){
+      return '役はスリーカード';
+  }elseif($count_value == [1,2,2]){
+      return '役はツーペア';
+  }elseif($count_value == [1,1,1,2]){
+      return '役はワンペア';
+  }else{
+      return '役はなし';
+  }
 }
-judge($cards)
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -85,7 +115,9 @@ judge($cards)
 
 <body>
   <section>
-
+    <p>手札は</p>
+    <p><?php foreach($cards as $card): ?><?=$card['suit'].$card['number'] ?> <?php endforeach; ?></p>
+    <p><?=judge($cards) ?>です。</p>
   </section>
 </body>
 

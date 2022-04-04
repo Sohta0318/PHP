@@ -164,11 +164,20 @@ if(!empty($row)){
 
 
         <td><?php echo $post_date;?></td>
-        <td><a href="../post.php?p_id=<?php echo $post_id;?>">View Post</a></td>
-        <td><a href="posts.php?source=edit_post&p_id=<?php echo $post_id;?>">Edit</a></td>
+        <td><a href="../post.php?p_id=<?php echo $post_id;?>" class="btn btn-primary">View Post</a></td>
+        <td><a href=" posts.php?source=edit_post&p_id=<?php echo $post_id;?>" class="btn btn-success">Edit</a></td>
         <!-- <td><a onclick="javascript: return confirm('Are you sure?')"
             href="posts.php?delete=<?php //echo $post_id;?>">Delete</a></td> -->
-        <td><a rel="<?php echo $post_id;?>" href="javascript:void(0)" class="delete_link">Delete</a></td>
+
+        <form action="post"><input type="hidden" value="<?php echo $post_id;?>" name="post_id">
+          <td><input type="submit" name="delete" value="Delete" class="btn btn-danger"></td>
+        </form>
+
+
+
+        <!-- <td><a rel="<?php //echo $post_id;?>" href="javascript:void(0)" class="delete_link">Delete</a></td> -->
+
+
         <td><a href="posts.php?reset=<?php echo $post_id;?>"><?php echo $post_views_count;?></a></td>
       </tr>
       <?php
@@ -181,8 +190,10 @@ if(!empty($row)){
   </table>
 
   <?php 
-if(isset($_GET['delete'])){
-  $post_id = $_GET['delete'];
+// if(isset($_GET['delete'])){
+if(isset($_POST['delete'])){
+  // $post_id = $_GET['delete'];
+  $post_id = $_POST['post_id'];
 
   $query= "DELETE FROM posts WHERE post_id = $post_id";
   $delete_query = mysqli_query($connection,$query);

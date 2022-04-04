@@ -13,7 +13,7 @@
 function primeNumber($num) {
   $flg = $num > 1 ? true : false;
   for($i=2;$i<$num;$i++) {
-    if([ X ]) {
+    if($num%$i == 0 ) {
       $flg = false;
       break;
     }
@@ -21,3 +21,4 @@ function primeNumber($num) {
   return $flg;
 }
 ?>
+<!-- ア -->
