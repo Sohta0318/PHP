@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">CMS Front</a>
+      <a class="navbar-brand" href="index">CMS Front</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -33,20 +33,20 @@ $registration = 'registration.php';
     $registration_class = 'active';
   }
 
-  echo "<li class='$category_class'><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
+  echo "<li class='$category_class'><a href='/sec%2012%20CMS%20project/category/$cat_id'>{$cat_title}</a></li>";
 
 }
 
 ?>
 
         <li>
-          <a href="admin">Admin</a>
+          <a href="/sec%2012%20CMS%20project/admin">Admin</a>
         </li>
         <li class="<?php echo $registration_class;?>">
-          <a href="registration.php">Registration</a>
+          <a href="/sec%2012%20CMS%20project/registration">Registration</a>
         </li>
         <li>
-          <a href="contact.php">Contact</a>
+          <a href="/sec%2012%20CMS%20project/contact">Contact</a>
         </li>
 
         <?php 
@@ -54,7 +54,7 @@ $registration = 'registration.php';
         if(isset($_SESSION['username'])){
           if(isset($_GET['p_id'])){
             $post_id = $_GET['p_id'];
-          echo "<li><a href='admin/posts.php?source=edit_post&p_id=$post_id'>Edit Post</a></li>";
+          echo "<li><a href='/sec%2012%20CMS%20project/admin/posts.php?source=edit_post&p_id=$post_id'>Edit Post</a></li>";
           }
         }
         ?>
